@@ -1,0 +1,1012 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Abhishek Lele — Bioengineer</title>
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Syne:wght@400;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    /* Font fallback overrides — applied before main styles load */
+    body { font-family: 'Space Mono', 'Courier New', Courier, monospace !important; }
+    h1,h2,h3,.section-title,.hero h1,.timeline-role,.project-title,.stat-num,.contact-text h2 {
+      font-family: 'Syne', Georgia, 'Times New Roman', serif !important;
+    }
+    .hero-tag,.section-label,.hero-subtitle,.timeline-date,.project-num,.skill-group-title,
+    .nav-logo,.btn,.tag,.skill-pill,.pub-link,.contact-link-label,.timeline-org,footer {
+      font-family: 'Share Tech Mono', 'Courier New', Courier, monospace !important;
+    }
+  </style>
+  <style>
+    :root {
+      --bg: #050a0f;
+      --surface: #0b1520;
+      --surface2: #0f1e2e;
+      --border: #1a3a55;
+      --accent: #00d4ff;
+      --accent2: #00ff9d;
+      --accent3: #ff6b35;
+      --text: #c8dde8;
+      --muted: #4a7090;
+      --heading: #e8f4ff;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Space Mono', monospace;
+      font-size: 14px;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* Animated grid background */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(0,212,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,212,255,0.03) 1px, transparent 1px);
+      background-size: 40px 40px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* Glowing orb */
+    body::after {
+      content: '';
+      position: fixed;
+      width: 600px;
+      height: 600px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(0,212,255,0.06) 0%, transparent 70%);
+      top: -200px;
+      right: -200px;
+      pointer-events: none;
+      z-index: 0;
+      animation: orbFloat 8s ease-in-out infinite;
+    }
+
+    @keyframes orbFloat {
+      0%, 100% { transform: translate(0, 0); }
+      50% { transform: translate(-30px, 40px); }
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 60px;
+      background: rgba(5,10,15,0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-logo {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 18px;
+      color: var(--accent);
+      letter-spacing: 2px;
+    }
+
+    .nav-logo span { color: var(--accent2); }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 32px;
+    }
+
+    nav ul a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 12px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    nav ul a:hover { color: var(--accent); }
+
+    /* HERO */
+    .hero {
+      position: relative;
+      z-index: 1;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 120px 60px 80px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .hero-content { max-width: 700px; }
+
+    .hero-tag {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 12px;
+      color: var(--accent2);
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+      animation: fadeUp 0.6s 0.2s both;
+    }
+
+    .hero h1 {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(52px, 7vw, 90px);
+      font-weight: 800;
+      color: var(--heading);
+      line-height: 1.0;
+      letter-spacing: -2px;
+      margin-bottom: 16px;
+      animation: fadeUp 0.6s 0.4s both;
+    }
+
+    .hero h1 .accent { color: var(--accent); }
+
+    .hero-subtitle {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 16px;
+      color: var(--accent3);
+      margin-bottom: 28px;
+      animation: fadeUp 0.6s 0.6s both;
+    }
+
+    .hero-desc {
+      font-size: 14px;
+      color: var(--text);
+      line-height: 1.9;
+      max-width: 560px;
+      animation: fadeUp 0.6s 0.8s both;
+      margin-bottom: 40px;
+    }
+
+    .hero-links {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      animation: fadeUp 0.6s 1s both;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 24px;
+      border: 1px solid var(--accent);
+      color: var(--accent);
+      text-decoration: none;
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 12px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      transition: all 0.2s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: var(--accent);
+      transform: translateX(-101%);
+      transition: transform 0.2s;
+      z-index: -1;
+    }
+
+    .btn:hover { color: var(--bg); }
+    .btn:hover::before { transform: translateX(0); }
+
+    .btn-solid {
+      background: var(--accent);
+      color: var(--bg);
+      border-color: var(--accent);
+    }
+
+    .btn-solid::before { background: var(--accent2); }
+    .btn-solid:hover { color: var(--bg); border-color: var(--accent2); }
+
+    /* SECTION */
+    section {
+      position: relative;
+      z-index: 1;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 100px 60px;
+    }
+
+    .section-label {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 11px;
+      color: var(--accent2);
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .section-label::after {
+      content: '';
+      flex: 1;
+      max-width: 60px;
+      height: 1px;
+      background: var(--accent2);
+    }
+
+    .section-title {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(32px, 4vw, 52px);
+      font-weight: 800;
+      color: var(--heading);
+      letter-spacing: -1px;
+      margin-bottom: 60px;
+    }
+
+    /* DIVIDER */
+    .divider {
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--border), transparent);
+    }
+
+    /* ABOUT */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: start;
+    }
+
+    .about-text p {
+      color: var(--text);
+      margin-bottom: 16px;
+      line-height: 1.9;
+    }
+
+    .about-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 2px;
+    }
+
+    .stat-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 28px 24px;
+      position: relative;
+      overflow: hidden;
+      transition: border-color 0.2s;
+    }
+
+    .stat-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: var(--accent);
+      transform: scaleX(0);
+      transition: transform 0.3s;
+    }
+
+    .stat-card:hover { border-color: var(--accent); }
+    .stat-card:hover::before { transform: scaleX(1); }
+
+    .stat-num {
+      font-family: 'Syne', sans-serif;
+      font-size: 36px;
+      font-weight: 800;
+      color: var(--accent);
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+
+    .stat-label {
+      font-size: 11px;
+      color: var(--muted);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    /* EXPERIENCE */
+    .timeline { position: relative; }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0; bottom: 0;
+      width: 1px;
+      background: linear-gradient(180deg, var(--accent), var(--accent2), transparent);
+    }
+
+    .timeline-item {
+      padding-left: 36px;
+      margin-bottom: 56px;
+      position: relative;
+    }
+
+    .timeline-dot {
+      position: absolute;
+      left: -5px;
+      top: 6px;
+      width: 11px;
+      height: 11px;
+      background: var(--accent);
+      border: 2px solid var(--bg);
+      border-radius: 50%;
+      box-shadow: 0 0 10px var(--accent);
+    }
+
+    .timeline-date {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 11px;
+      color: var(--accent3);
+      letter-spacing: 2px;
+      margin-bottom: 8px;
+    }
+
+    .timeline-role {
+      font-family: 'Syne', sans-serif;
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--heading);
+      margin-bottom: 4px;
+    }
+
+    .timeline-org {
+      font-size: 13px;
+      color: var(--accent);
+      margin-bottom: 16px;
+    }
+
+    .timeline-desc {
+      color: var(--text);
+      font-size: 13px;
+      line-height: 1.8;
+    }
+
+    .timeline-desc li {
+      margin-bottom: 8px;
+      padding-left: 16px;
+      position: relative;
+    }
+
+    .timeline-desc li::before {
+      content: '▸';
+      position: absolute;
+      left: 0;
+      color: var(--accent2);
+    }
+
+    /* PROJECTS */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2px;
+    }
+
+    .project-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 36px 32px;
+      position: relative;
+      overflow: hidden;
+      transition: border-color 0.3s, transform 0.3s;
+    }
+
+    .project-card::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(0,212,255,0.04), transparent);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .project-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-4px);
+    }
+
+    .project-card:hover::after { opacity: 1; }
+
+    .project-num {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 11px;
+      color: var(--muted);
+      letter-spacing: 2px;
+      margin-bottom: 16px;
+    }
+
+    .project-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--heading);
+      margin-bottom: 12px;
+      line-height: 1.2;
+    }
+
+    .project-desc {
+      font-size: 13px;
+      color: var(--text);
+      line-height: 1.8;
+      margin-bottom: 20px;
+    }
+
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .tag {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 10px;
+      padding: 4px 10px;
+      border: 1px solid var(--border);
+      color: var(--muted);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    /* SKILLS */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 2px;
+    }
+
+    .skill-group {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 28px;
+    }
+
+    .skill-group-title {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 11px;
+      color: var(--accent2);
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .skill-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .skill-pill {
+      font-size: 12px;
+      padding: 5px 12px;
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      color: var(--text);
+      border-radius: 2px;
+      transition: all 0.2s;
+    }
+
+    .skill-pill:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    /* PUBLICATIONS */
+    .pub-list { display: flex; flex-direction: column; gap: 2px; }
+
+    .pub-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 28px 32px;
+      display: flex;
+      gap: 24px;
+      align-items: flex-start;
+      transition: border-color 0.2s;
+    }
+
+    .pub-card:hover { border-color: var(--accent2); }
+
+    .pub-icon {
+      font-size: 24px;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .pub-title {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      color: var(--heading);
+      font-size: 16px;
+      margin-bottom: 6px;
+    }
+
+    .pub-authors {
+      font-size: 12px;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+
+    .pub-link {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 11px;
+      color: var(--accent);
+      text-decoration: none;
+      letter-spacing: 1px;
+    }
+
+    .pub-link:hover { color: var(--accent2); }
+
+    /* CONTACT */
+    .contact-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .contact-text h2 {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(28px, 4vw, 48px);
+      font-weight: 800;
+      color: var(--heading);
+      line-height: 1.1;
+      margin-bottom: 20px;
+    }
+
+    .contact-text p {
+      color: var(--text);
+      font-size: 13px;
+      line-height: 1.9;
+      margin-bottom: 32px;
+    }
+
+    .contact-links {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .contact-link {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 18px 24px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: var(--text);
+      transition: all 0.2s;
+    }
+
+    .contact-link:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .contact-link-icon {
+      font-size: 18px;
+      width: 24px;
+      text-align: center;
+    }
+
+    .contact-link-label {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 11px;
+      color: var(--muted);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-left: auto;
+    }
+
+    /* FOOTER */
+    footer {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      padding: 40px 60px;
+      border-top: 1px solid var(--border);
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 11px;
+      color: var(--muted);
+      letter-spacing: 2px;
+    }
+
+    /* ANIMATIONS */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .js-loaded .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .js-loaded .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* SCROLLBAR */
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--border); }
+    ::-webkit-scrollbar-thumb:hover { background: var(--accent); }
+
+    @media (max-width: 768px) {
+      nav { padding: 16px 24px; }
+      nav ul { gap: 16px; }
+      .hero, section { padding: 80px 24px; }
+      .about-grid, .contact-inner { grid-template-columns: 1fr; gap: 40px; }
+      .projects-grid, .skills-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="nav-logo">AL<span>.</span></div>
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-content">
+      <div class="hero-tag">// Mechanical Engineer & Medical Device Engineer</div>
+      <h1>Abhishek<br><span class="accent">Lele</span></h1>
+      <div style="display:flex;align-items:center;gap:16px;margin-bottom:24px;animation:fadeUp 0.6s 0.5s both;">
+        <img src="https://upload.wikimedia.org/wikipedia/en/thumb/2/28/UC_San_Diego_seal.svg/240px-UC_San_Diego_seal.svg.png" alt="UCSD Seal" style="width:48px;height:48px;opacity:0.9;filter:drop-shadow(0 0 8px rgba(0,212,255,0.4));">
+        <div style="border-left:1px solid var(--border);padding-left:16px;">
+          <div style="font-family:'Share Tech Mono',monospace;font-size:11px;color:var(--accent);letter-spacing:2px;">UC SAN DIEGO</div>
+          <div style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--muted);letter-spacing:1px;">SCHOOL OF ENGINEERING</div>
+        </div>
+      </div>
+      <div class="hero-subtitle">M.Eng. Bioengineering (Medical Device Engineering) · UC San Diego<br>B.Tech. Mechanical Engineering · MIT World Peace University</div>
+      <p class="hero-desc">
+        Building at the intersection of biomechanics, medical devices, and embedded systems.
+        From smart insoles to haptic gloves — I engineer solutions that bridge the gap between
+        clinical insight and physical hardware.
+      </p>
+      <div class="hero-links">
+        <a href="#projects" class="btn btn-solid">View Projects</a>
+        <a href="/cdn-cgi/l/email-protection#76171a131a13360315051258131203" class="btn">Get In Touch</a>
+        <a href="https://www.linkedin.com/in/abhishek-lele-a35732220" target="_blank" class="btn">LinkedIn</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="section-label">01 // About</div>
+    <h2 class="section-title">Who I Am</h2>
+    <div class="about-grid">
+      <div class="about-text reveal">
+        <p>
+          I'm a Bioengineer pursuing my M.Eng. at UC San Diego, specializing in Medical Device Engineering.
+          With a B.Tech. in Mechanical Engineering from MIT World Peace University (GPA: 3.98/4.0),
+          I combine deep mechanical intuition with a passion for life-changing biomedical technology.
+        </p>
+        <p>
+          My work spans finite element analysis of orthopedic implants, biomechanical motion capture
+          for Parkinson's patients, and full-stack wearable device development — from sensor fabrication
+          to real-time data visualization.
+        </p>
+        <p>
+          I'm driven by a simple belief: the best medical devices feel invisible to patients while
+          delivering precise, life-improving data to clinicians.
+        </p>
+      </div>
+      <div class="about-stats reveal">
+        <div class="stat-card">
+          <div class="stat-num">3.98</div>
+          <div class="stat-label">Undergrad GPA</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">3.67</div>
+          <div class="stat-label">Graduate GPA</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">2</div>
+          <div class="stat-label">Publications</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- EXPERIENCE -->
+  <section id="experience">
+    <div class="section-label">02 // Experience</div>
+    <h2 class="section-title">Work History</h2>
+    <div class="timeline">
+
+      <div class="timeline-item reveal">
+        <div class="timeline-dot"></div>
+        <div class="timeline-date">JAN 2025 – JUN 2025</div>
+        <div class="timeline-role">R&D Intern — Medical Implants</div>
+        <div class="timeline-org">Precima Technologies Pvt. Ltd. · Pune, India</div>
+        <ul class="timeline-desc">
+          <li>Developed mechanically accurate 3D implant models in SolidWorks; improved manufacturability with Mastercam.</li>
+          <li>Conducted fatigue testing under cyclic loading using UTM and Abaqus FEA, achieving 93% simulation–experiment agreement — refined to 96% through iterative geometry tuning.</li>
+        </ul>
+      </div>
+
+      <div class="timeline-item reveal">
+        <div class="timeline-dot"></div>
+        <div class="timeline-date">JUN 2024 – DEC 2024</div>
+        <div class="timeline-role">Biomechanics Research Intern</div>
+        <div class="timeline-org">Deenanath Mangeshkar Hospital · Pune, India</div>
+        <ul class="timeline-desc">
+          <li>Acquired and analyzed kinematic, kinetic, and spatiotemporal gait data from Parkinson's patients using Vicon motion capture and pressure-sensing platforms.</li>
+          <li>Developed and tested SoleSense — a wearable sensor-based insole enabling out-of-lab human motion assessment for plantar pressure, gait stage, and foot orientation monitoring.</li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <div class="section-label">03 // Projects</div>
+    <h2 class="section-title">What I've Built</h2>
+    <div class="projects-grid">
+
+      <div class="project-card reveal">
+        <div class="project-num">PROJECT_01 &nbsp;·&nbsp; JAN 2026 – MAR 2026</div>
+        <div class="project-title">Multimodal Wearable Haptic Navigation System for Assistive Spatial Awareness</div>
+        <p class="project-desc">
+          Engineered a wireless two-module haptic system: a spectacle-mounted sensing unit with a VL53L5CX Time-of-Flight sensor and BLE transmitter, and a forearm-mounted feedback module for real-time obstacle communication.
+          Implemented multimodal haptic feedback using a Peltier thermoelectric actuator and VCA vibrotactile motor, controlled via Arduino Nano, with closed-loop thermal control maintaining safe skin-contact temperatures between 15–42 °C.
+          Developed algorithms mapping obstacle distance and direction to thermal pulses and vibration cues — enabling perception of approaching objects within 0.3–3 m with low-latency wireless feedback.
+        </p>
+        <div class="project-tags">
+          <span class="tag">BLE</span>
+          <span class="tag">ToF Sensor</span>
+          <span class="tag">Haptics</span>
+          <span class="tag">Arduino</span>
+          <span class="tag">Peltier</span>
+          <span class="tag">Wearable</span>
+          <span class="tag">KiCad</span>
+        </div>
+      </div>
+
+      <div class="project-card reveal">
+        <div class="project-num">PROJECT_02 &nbsp;·&nbsp; SEPT 2025 – DEC 2025</div>
+        <div class="project-title">Soft-Tip Cardiac Ablation Catheter with Contact-Force Sensing and Haptic Feedback</div>
+        <p class="project-desc">
+          Designed an 8 Fr cardiac ablation-style catheter with an elastic resin distal tip and Pebax braided shaft,
+          integrating piezoresistive contact-force sensing to monitor catheter–tissue interaction forces.
+          Developed real-time force estimation and haptic feedback control using Arduino Nano 33 BLE and MATLAB,
+          translating forces into graded vibrotactile alerts via 3V coin motors in the handle.
+          Prototyped via SolidWorks, ANSYS, and SLA 3D printing — achieving detectable sensing in the 0.05–0.5 N range with &lt;50 ms feedback latency.
+        </p>
+        <div class="project-tags">
+          <span class="tag">SolidWorks</span>
+          <span class="tag">ANSYS</span>
+          <span class="tag">SLA 3D Print</span>
+          <span class="tag">Arduino</span>
+          <span class="tag">MATLAB</span>
+          <span class="tag">Haptics</span>
+          <span class="tag">Catheter Design</span>
+        </div>
+      </div>
+
+      <div class="project-card reveal">
+        <div class="project-num">PROJECT_03 &nbsp;·&nbsp; JUL 2024 – DEC 2024</div>
+        <div class="project-title">TeleGlove</div>
+        <p class="project-desc">
+          A bidirectional wearable haptic glove integrating FSRs, flex sensors, and an IMU for
+          real-time hand motion tracking. Mapped position/motion into a Unity virtual environment
+          with vibrotactile feedback for closed-loop force-proportional response. Achieved 65% motion
+          translation and feedback efficiency.
+        </p>
+        <div class="project-tags">
+          <span class="tag">Haptics</span>
+          <span class="tag">Unity</span>
+          <span class="tag">IMU</span>
+          <span class="tag">Embedded</span>
+          <span class="tag">FSR</span>
+        </div>
+      </div>
+
+      <div class="project-card reveal">
+        <div class="project-num">PROJECT_04 &nbsp;·&nbsp; JAN 2024 – MAY 2024</div>
+        <div class="project-title">SoleSense</div>
+        <p class="project-desc">
+          A smart insole instrumented with custom-fabricated pressure sensors and an IMU on a flexible
+          PCB. Captured plantar pressure distributions and foot orientation with real-time Processing
+          visualization. Achieved 80% accuracy in foot orientation tracking versus dynamic walkways
+          in clinical patient evaluations.
+        </p>
+        <div class="project-tags">
+          <span class="tag">fPCB</span>
+          <span class="tag">IMU</span>
+          <span class="tag">Processing</span>
+          <span class="tag">Gait Analysis</span>
+          <span class="tag">Wearable</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <div class="section-label">04 // Skills</div>
+    <h2 class="section-title">Technical Arsenal</h2>
+    <div class="skills-grid">
+
+      <div class="skill-group reveal">
+        <div class="skill-group-title">CAD / FEA</div>
+        <div class="skill-list">
+          <span class="skill-pill">SolidWorks</span>
+          <span class="skill-pill">AutoCAD</span>
+          <span class="skill-pill">Creo</span>
+          <span class="skill-pill">Fusion 360</span>
+          <span class="skill-pill">CATIA</span>
+          <span class="skill-pill">Abaqus</span>
+          <span class="skill-pill">ANSYS</span>
+          <span class="skill-pill">Altair HyperWorks</span>
+          <span class="skill-pill">Mastercam</span>
+        </div>
+      </div>
+
+      <div class="skill-group reveal">
+        <div class="skill-group-title">Programming</div>
+        <div class="skill-list">
+          <span class="skill-pill">MATLAB</span>
+          <span class="skill-pill">Python</span>
+          <span class="skill-pill">C++</span>
+          <span class="skill-pill">SQL</span>
+          <span class="skill-pill">Arduino IDE</span>
+          <span class="skill-pill">Processing</span>
+          <span class="skill-pill">Unity</span>
+          <span class="skill-pill">KiCad</span>
+        </div>
+      </div>
+
+      <div class="skill-group reveal">
+        <div class="skill-group-title">Biomechanics & Motion</div>
+        <div class="skill-list">
+          <span class="skill-pill">Vicon Nexus</span>
+          <span class="skill-pill">OpenSim</span>
+          <span class="skill-pill">FootWork</span>
+          <span class="skill-pill">LabChart</span>
+          <span class="skill-pill">Gait Analysis</span>
+          <span class="skill-pill">Motion Capture</span>
+        </div>
+      </div>
+
+      <div class="skill-group reveal">
+        <div class="skill-group-title">Domain Expertise</div>
+        <div class="skill-list">
+          <span class="skill-pill">Soft Robotics</span>
+          <span class="skill-pill">Haptic Systems</span>
+          <span class="skill-pill">Biomaterials</span>
+          <span class="skill-pill">Regulatory Affairs</span>
+          <span class="skill-pill">Wearables</span>
+          <span class="skill-pill">FEM</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Publications -->
+    <div style="margin-top: 80px;">
+      <div class="section-label">04b // Publications</div>
+      <h3 style="font-family:'Syne',sans-serif; font-size:28px; font-weight:800; color:var(--heading); margin-bottom:32px; letter-spacing:-0.5px;">Research</h3>
+      <div class="pub-list">
+        <div class="pub-card reveal">
+          <div class="pub-icon">📄</div>
+          <div>
+            <div class="pub-title">Gait Analysis and Treatment Strategies for Motor Symptoms in Parkinson's Disease: A Comprehensive Review</div>
+            <div class="pub-authors">Dr. Pankaj Dhatrak, Abhishek Lele, Mihir Kshirsagar · Research on Biomedical Engineering · Sept 2025</div>
+            <a href="https://doi.org/10.1007/s42600-025-00438-y" target="_blank" class="pub-link">doi.org/10.1007/s42600-025-00438-y ↗</a>
+          </div>
+        </div>
+        <div class="pub-card reveal">
+          <div class="pub-icon">📄</div>
+          <div>
+            <div class="pub-title">Development of a Mock-up of a Smart Insole Using FSR and ADXL345</div>
+            <div class="pub-authors">Abhishek Lele, Dr. Dnyanenshwar Waghole, Dr. Pankaj Dhatrak · May 2024</div>
+            <a href="https://doi.org/10.20944/preprints202404.1680.v2" target="_blank" class="pub-link">doi.org/10.20944/preprints202404.1680.v2 ↗</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="contact-inner">
+      <div class="contact-text reveal">
+        <div class="section-label">05 // Contact</div>
+        <h2>Let's Build Something.</h2>
+        <p>
+          Open to research collaborations, internship opportunities, and conversations about
+          medical devices, biomechanics, or wearable tech. Based in San Diego, CA.
+        </p>
+        <a href="mailto:alele@ucsd.edu" class="btn btn-solid">alele@ucsd.edu</a>
+      </div>
+      <div class="contact-links reveal">
+        <a href="mailto:alele@ucsd.edu" class="contact-link">
+          <span class="contact-link-icon">✉</span>
+          alele@ucsd.edu
+          <span class="contact-link-label">Email</span>
+        </a>
+        <a href="https://www.linkedin.com/in/abhishek-lele-a35732220" target="_blank" class="contact-link">
+          <span class="contact-link-icon">in</span>
+          abhishek-lele-a35732220
+          <span class="contact-link-label">LinkedIn</span>
+        </a>
+        <a href="tel:+16199539376" class="contact-link">
+          <span class="contact-link-icon">☎</span>
+          (619) 953-9376
+          <span class="contact-link-label">Phone</span>
+        </a>
+        <div class="contact-link" style="cursor:default;">
+          <span class="contact-link-icon">📍</span>
+          San Diego, CA
+          <span class="contact-link-label">Location</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <span>© 2026 ABHISHEK LELE // BUILT WITH PURPOSE</span>
+  </footer>
+
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    // Mark JS as loaded so reveal animations activate
+    document.body.classList.add('js-loaded');
+
+    // Scroll reveal
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => entry.target.classList.add('visible'), i * 80);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    reveals.forEach(el => observer.observe(el));
+
+    // Nav active state
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = d
