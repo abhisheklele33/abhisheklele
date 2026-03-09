@@ -673,17 +673,11 @@
   </nav>
 
   <!-- HERO -->
-  <div class="hero">
+  <div class="hero" style="display:flex;justify-content:space-between;align-items:center;gap:60px;">
     <div class="hero-content">
       <div class="hero-tag">// Mechanical Engineer & Medical Device Engineer</div>
       <h1>Abhishek<br><span class="accent">Lele</span></h1>
-      <div style="display:flex;align-items:center;gap:16px;margin-bottom:24px;animation:fadeUp 0.6s 0.5s both;">
-        <img src="https://upload.wikimedia.org/wikipedia/en/thumb/2/28/UC_San_Diego_seal.svg/240px-UC_San_Diego_seal.svg.png" alt="UCSD Seal" style="width:48px;height:48px;opacity:0.9;filter:drop-shadow(0 0 8px rgba(0,212,255,0.4));">
-        <div style="border-left:1px solid var(--border);padding-left:16px;">
-          <div style="font-family:'Share Tech Mono',monospace;font-size:11px;color:var(--accent);letter-spacing:2px;">UC SAN DIEGO</div>
-          <div style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--muted);letter-spacing:1px;">SCHOOL OF ENGINEERING</div>
-        </div>
-      </div>
+
       <div class="hero-subtitle">M.Eng. Bioengineering (Medical Device Engineering) · UC San Diego<br>B.Tech. Mechanical Engineering · MIT World Peace University</div>
       <p class="hero-desc">
         Building at the intersection of biomechanics, medical devices, and embedded systems.
@@ -696,6 +690,33 @@
         <a href="https://www.linkedin.com/in/abhishek-lele-a35732220" target="_blank" class="btn">LinkedIn</a>
       </div>
     </div>
+
+    <!-- Right side panel -->
+    <div style="flex-shrink:0;width:340px;display:flex;flex-direction:column;gap:2px;animation:fadeUp 0.6s 1s both;">
+      <div style="background:var(--surface);border:1px solid var(--border);padding:28px;position:relative;overflow:hidden;">
+        <div style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--accent2);letter-spacing:3px;margin-bottom:16px;text-transform:uppercase;">// Current Focus</div>
+        <div style="font-family:'Syne',sans-serif;font-size:18px;font-weight:700;color:var(--heading);margin-bottom:8px;">M.Eng. Bioengineering</div>
+        <div style="font-size:12px;color:var(--muted);">Medical Device Engineering Track</div>
+        <div style="font-size:12px;color:var(--accent);margin-top:4px;">UC San Diego · Sept 2025 – Dec 2026</div>
+      </div>
+      <div style="background:var(--surface);border:1px solid var(--border);padding:28px;">
+        <div style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--accent2);letter-spacing:3px;margin-bottom:16px;text-transform:uppercase;">// Interests</div>
+        <div style="display:flex;flex-wrap:wrap;gap:8px;">
+          <span class="skill-pill">Medical Devices</span>
+          <span class="skill-pill">Wearables</span>
+          <span class="skill-pill">Biomechanics</span>
+          <span class="skill-pill">Haptics</span>
+          <span class="skill-pill">FEA</span>
+          <span class="skill-pill">Soft Robotics</span>
+        </div>
+      </div>
+      <div style="background:var(--surface);border:1px solid var(--border);padding:28px;">
+        <div style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--accent2);letter-spacing:3px;margin-bottom:16px;text-transform:uppercase;">// Based In</div>
+        <div style="font-size:13px;color:var(--text);">📍 San Diego, California</div>
+        <div style="font-size:12px;color:var(--muted);margin-top:6px;">Open to opportunities</div>
+      </div>
+    </div>
+
   </div>
 
   <div class="divider"></div>
@@ -735,6 +756,65 @@
           <div class="stat-label">Publications</div>
         </div>
       </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- EDUCATION -->
+  <section id="education">
+    <div class="section-label">02 // Education</div>
+    <h2 class="section-title">Academic Background</h2>
+    <div style="display:flex;flex-direction:column;gap:2px;">
+
+      <div class="pub-card reveal" style="flex-direction:column;gap:0;">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:12px;margin-bottom:16px;">
+          <div>
+            <div class="timeline-role">M.Eng. Bioengineering — Medical Device Engineering</div>
+            <div class="timeline-org">UC San Diego · San Diego, CA</div>
+          </div>
+          <div style="text-align:right;">
+            <div class="timeline-date">SEPT 2025 – DEC 2026</div>
+            <div style="font-family:'Share Tech Mono',monospace;font-size:12px;color:var(--accent2);">GPA: 3.67 / 4.0</div>
+          </div>
+        </div>
+        <div style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--muted);letter-spacing:2px;text-transform:uppercase;margin-bottom:10px;">Relevant Coursework</div>
+        <div style="display:flex;flex-wrap:wrap;gap:8px;">
+          <span class="tag">Medical Device Design</span>
+          <span class="tag">Biomechanics</span>
+          <span class="tag">Regulatory Affairs</span>
+          <span class="tag">Bioinstrumentation</span>
+          <span class="tag">Biomaterials</span>
+          <span class="tag">Wearable Sensing Systems</span>
+          <span class="tag">Clinical Translation</span>
+        </div>
+      </div>
+
+      <div class="pub-card reveal" style="flex-direction:column;gap:0;">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:12px;margin-bottom:16px;">
+          <div>
+            <div class="timeline-role">B.Tech. Mechanical Engineering</div>
+            <div class="timeline-org">MIT World Peace University · Pune, India</div>
+          </div>
+          <div style="text-align:right;">
+            <div class="timeline-date">2020 – 2024</div>
+            <div style="font-family:'Share Tech Mono',monospace;font-size:12px;color:var(--accent2);">GPA: 3.98 / 4.0</div>
+          </div>
+        </div>
+        <div style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--muted);letter-spacing:2px;text-transform:uppercase;margin-bottom:10px;">Relevant Coursework</div>
+        <div style="display:flex;flex-wrap:wrap;gap:8px;">
+          <span class="tag">Finite Element Analysis</span>
+          <span class="tag">Machine Design</span>
+          <span class="tag">Fluid Mechanics</span>
+          <span class="tag">Heat Transfer</span>
+          <span class="tag">CAD/CAM</span>
+          <span class="tag">Manufacturing Processes</span>
+          <span class="tag">Dynamics & Vibrations</span>
+          <span class="tag">Robotics</span>
+          <span class="tag">Control Systems</span>
+        </div>
+      </div>
+
     </div>
   </section>
 
