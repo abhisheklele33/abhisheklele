@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Orthon — Abhishek Lele</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<nav>
+  <a href="../index.html" class="nav-back nav-name">← Portfolio</a>
+  <div class="nav-links">
+    <a href="https://abhisheklele33.github.io/abhisheklele/" class="nav-ext" target="_blank">Full Site ↗</a>
+  </div>
+</nav>
+
+<div class="proj-page-hero">
+  <div class="proj-page-label">Project 02 · Jan 2026 – May 2026 · UC San Diego</div>
+  <div class="proj-page-title">Orthon — Closed-Loop Sensing and Actuation System for Real-Time Plantar Pressure Offloading</div>
+  <div class="proj-page-meta">
+    <div class="proj-page-meta-item">Type: <span>Capstone / Team Project</span></div>
+    <div class="proj-page-meta-item">Advisor: <span>Dr. Moamen Elhaddad, MD, DPM</span></div>
+    <div class="proj-page-meta-item">Team: <span>M2 — 6 members</span></div>
+  </div>
+  <div class="proj-page-tags">
+    <span class="tag">Closed-Loop Control</span><span class="tag">Pressure Sensing</span><span class="tag">Nitinol</span><span class="tag">MRF Actuator</span><span class="tag">Custom PCB</span><span class="tag">PI Control</span><span class="tag">Diabetic Foot</span><span class="tag">Embedded Systems</span>
+  </div>
+</div>
+
+<div class="proj-content">
+
+  <div class="proj-section">
+    <div class="proj-section-title">Overview</div>
+    <p>Orthon is a smart insole system that autonomously detects high-pressure plantar regions and actively offloads them in real time to reduce diabetic foot ulcer risk. With over 537 million people living with diabetes globally — projected to reach 643 million by 2030 — and 19–34% developing foot ulcers during their lifetime, pressure offloading is a critical and underserved clinical need.</p>
+    <p>The system comprises a layered insole with a pressure sensor array, two actuator module designs (Nitinol lock-ring and Magnetorheological Fluid), a custom PCB, and a closed-loop PI control algorithm that continuously adjusts module height to redistribute plantar load.</p>
+    <div class="highlight-box"><p>Clinical targets met: offload pressure by 30–50% · withstand 800–1200 kPa peak plantar pressure · fit within 20 mm height constraint · identify heel strike, midstance, and toe liftoff.</p></div>
+  </div>
+
+  <div class="proj-section">
+    <div class="proj-section-title">Key Specifications</div>
+    <div class="specs-grid">
+      <div class="spec-cell"><div class="spec-label">Pressure Offload</div><div class="spec-value">30 – 50%</div></div>
+      <div class="spec-cell"><div class="spec-label">Peak Pressure</div><div class="spec-value">800 – 1200 kPa</div></div>
+      <div class="spec-cell"><div class="spec-label">Height Constraint</div><div class="spec-value">≤ 20 mm</div></div>
+      <div class="spec-cell"><div class="spec-label">Module Stroke</div><div class="spec-value">15 mm → 12 mm</div></div>
+      <div class="spec-cell"><div class="spec-label">Control</div><div class="spec-value">Closed-loop PI</div></div>
+      <div class="spec-cell"><div class="spec-label">Mapping Algorithm</div><div class="spec-value">IDW (O(h²) error)</div></div>
+      <div class="spec-cell"><div class="spec-label">Gait Phases</div><div class="spec-value">Heel strike / Midstance / Toe-off</div></div>
+      <div class="spec-cell"><div class="spec-label">Regulatory Target</div><div class="spec-value">Class II device pathway</div></div>
+    </div>
+  </div>
+
+  <div class="proj-section">
+    <div class="proj-section-title">Hardware Design</div>
+    <p><strong>Sensing layer:</strong> A pressure sensor array maps plantar pressure distribution in real time. Data is processed via a low-pass moving average filter and mapped using Inverse Distance Weighting (IDW) interpolation with O(h²) accuracy.</p>
+    <p><strong>Nitinol Lock-Ring Module:</strong> A flexible nitinol-embedded TPU ring expands when current is applied, releasing the platform from a locked state into a spring-supported offloading position (15 mm → 12 mm drop). This provides passive, energy-efficient offloading.</p>
+    <p><strong>MRF (Magnetorheological Fluid) Module:</strong> An electromagnet coil controls the viscosity of MRF through a piston orifice, enabling selective switching between rigid support and soft offloading states. Modules in soft state transfer load to adjacent rigid modules, achieving targeted redistribution.</p>
+    <p><strong>Custom PCB:</strong> A bespoke PCB interfaces the sensor array and module controllers, handling power distribution, signal conditioning, and microcontroller communication.</p>
+  </div>
+
+  <div class="proj-section">
+    <div class="proj-section-title">Control Architecture</div>
+    <p>A descending-priority greedy selector algorithm identifies high-pressure spots from the mapped data and assigns offloading priority. A closed-loop PI controller then drives individual module height adjustments to reach target pressure thresholds. Real-time feedback is provided to both the patient (via a display interface) and the clinical team.</p>
+    <p>Bench testing confirmed that each excess pressure spike triggers a corresponding rise in module offloading distance, with the actuator dropping to redistribute the localized load — directly validating the offloading strategy.</p>
+  </div>
+
+  <div class="proj-section">
+    <div class="proj-section-title">Downloads &amp; Files</div>
+    <div class="files-list">
+      <div class="file-row">
+        <div class="file-info">
+          <span class="file-icon">PDF</span>
+          <div>
+            <div class="file-name">Orthon Team Poster</div>
+            <div class="file-desc">Full project poster: background, hardware design, sensing &amp; control, results, and future steps</div>
+          </div>
+        </div>
+        <a href="../assets/files/TeamM2_OrthonPoster_pptx__1_.pdf" download class="file-dl">Download ↓</a>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <span class="footer-left">© 2026 Abhishek Lele</span>
+  <div class="footer-links">
+    <a href="../index.html">← Portfolio</a>
+    <a href="https://abhisheklele33.github.io/abhisheklele/" target="_blank">Full Site ↗</a>
+    <a href="mailto:alele@ucsd.edu">Email</a>
+  </div>
+</footer>
+</body>
+</html>

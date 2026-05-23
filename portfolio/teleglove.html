@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>ContinuEar — Abhishek Lele</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<nav>
+  <a href="../index.html" class="nav-back nav-name">← Portfolio</a>
+  <div class="nav-links">
+    <a href="https://abhisheklele33.github.io/abhisheklele/" class="nav-ext" target="_blank">Full Site ↗</a>
+  </div>
+</nav>
+
+<div class="proj-page-hero">
+  <div class="proj-page-label">Project 01 · Current · UC San Diego</div>
+  <div class="proj-page-title">ContinuEar — An In-Ear Wearable for Continuous Blood Pressure Monitoring via PPG, ECG, and Temperature Fusion</div>
+  <div class="proj-page-meta">
+    <div class="proj-page-meta-item">Status: <span>In Progress</span></div>
+    <div class="proj-page-meta-item">Institution: <span>UC San Diego</span></div>
+    <div class="proj-page-meta-item">Type: <span>Graduate Research Project</span></div>
+  </div>
+  <div class="proj-page-tags">
+    <span class="tag">PPG</span><span class="tag">ECG</span><span class="tag">Temperature Sensing</span><span class="tag">Sensor Fusion</span><span class="tag">Cuffless BP</span><span class="tag">In-Ear Wearable</span><span class="tag">Low Power</span><span class="tag">Signal Processing</span>
+  </div>
+</div>
+
+<div class="proj-content">
+
+  <div class="proj-section">
+    <div class="proj-section-title">Overview</div>
+    <p>ContinuEar is an in-ear wearable device designed to enable continuous, cuffless blood pressure (BP) monitoring using a multi-modal physiological sensing approach. Blood pressure is one of the most important vital signs and a leading predictor of cardiovascular events, yet conventional measurement requires disruptive cuff inflation that prevents ambulatory or sleep monitoring.</p>
+    <p>ContinuEar addresses this gap by fusing three complementary sensing modalities from a single, comfortable in-ear form factor: photoplethysmography (PPG) for pulse waveform and vascular compliance, electrocardiography (ECG) for pulse transit time (PTT) calculation, and skin temperature for thermoregulatory correction. The fusion of these three signals enables a calibration-based continuous BP estimate with improved accuracy over single-modality approaches.</p>
+    <div class="highlight-box"><p>The ear canal is an acoustically and optically favorable site for PPG — well-perfused, motion-artifact resistant, and in close proximity to the carotid artery — making it ideal for continuous cardiovascular monitoring.</p></div>
+  </div>
+
+  <div class="proj-section">
+    <div class="proj-section-title">Technical Approach</div>
+    <div class="specs-grid">
+      <div class="spec-cell"><div class="spec-label">PPG</div><div class="spec-value">Pulse waveform + SpO₂</div></div>
+      <div class="spec-cell"><div class="spec-label">ECG</div><div class="spec-value">PTT-based BP estimation</div></div>
+      <div class="spec-cell"><div class="spec-label">Temperature</div><div class="spec-value">Thermoregulatory correction</div></div>
+      <div class="spec-cell"><div class="spec-label">Form Factor</div><div class="spec-value">In-ear (earphone-like)</div></div>
+      <div class="spec-cell"><div class="spec-label">Target</div><div class="spec-value">Continuous ambulatory BP</div></div>
+      <div class="spec-cell"><div class="spec-label">Power</div><div class="spec-value">Low-power, always-on</div></div>
+    </div>
+    <p>Pulse Transit Time — the interval between the ECG R-wave and the PPG pulse arrival — has a well-established inverse relationship with blood pressure. By combining PTT with the PPG waveform morphology (augmentation index, pulse wave velocity proxy) and temperature compensation for peripheral vascular tone, ContinuEar aims to produce robust BP estimates across a range of physiological states.</p>
+  </div>
+
+  <div class="proj-section">
+    <div class="proj-section-title">Status</div>
+    <p>This project is currently in active development. Hardware design and sensor selection are underway, with early-stage signal acquisition and fusion algorithm development in progress. Files and documentation will be added as the project advances.</p>
+    <p>Check back for updates, or reach out directly at <a href="mailto:alele@ucsd.edu" style="color:var(--accent)">alele@ucsd.edu</a>.</p>
+  </div>
+
+</div>
+
+<footer>
+  <span class="footer-left">© 2026 Abhishek Lele</span>
+  <div class="footer-links">
+    <a href="../index.html">← Portfolio</a>
+    <a href="https://abhisheklele33.github.io/abhisheklele/" target="_blank">Full Site ↗</a>
+    <a href="mailto:alele@ucsd.edu">Email</a>
+  </div>
+</footer>
+</body>
+</html>

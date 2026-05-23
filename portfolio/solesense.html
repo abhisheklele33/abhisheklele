@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Two-Stage Gearbox — Abhishek Lele</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<nav>
+  <a href="../index.html" class="nav-back nav-name">← Portfolio</a>
+  <div class="nav-links">
+    <a href="https://abhisheklele33.github.io/abhisheklele/" class="nav-ext" target="_blank">Full Site ↗</a>
+  </div>
+</nav>
+
+<div class="proj-page-hero">
+  <div class="proj-page-label">Project 08 · Sep 2023 – Dec 2023 · MIT World Peace University</div>
+  <div class="proj-page-title">Design of a Two-Stage Helical-Spur Speed Reduction Gearbox</div>
+  <div class="proj-page-meta">
+    <div class="proj-page-meta-item">Type: <span>Mechanical Design Project</span></div>
+    <div class="proj-page-meta-item">Institution: <span>MIT World Peace University, Pune</span></div>
+    <div class="proj-page-meta-item">Domain: <span>Machine Design / Power Transmission</span></div>
+  </div>
+  <div class="proj-page-tags">
+    <span class="tag">SolidWorks</span><span class="tag">FEA</span><span class="tag">Gear Design</span><span class="tag">Shaft Design</span><span class="tag">Bearing Selection</span><span class="tag">Tolerance Analysis</span><span class="tag">Power Transmission</span><span class="tag">CAD</span>
+  </div>
+</div>
+
+<div class="proj-content">
+
+  <div class="proj-section">
+    <div class="proj-section-title">Overview</div>
+    <p>This project involved the complete mechanical design and analysis of a two-stage speed reduction gearbox combining a helical gear first stage and a spur gear second stage. The gearbox was designed to achieve a specified speed reduction ratio while meeting strength, fatigue life, and geometric constraints.</p>
+    <p>The design process followed a systematic approach: gear geometry calculation → shaft design under combined bending and torsion → key and coupling design → bearing selection for rated life → housing design → tolerance stacking and fit analysis. Each component was modelled in SolidWorks and validated through analytical calculations and FEA.</p>
+  </div>
+
+  <div class="proj-section">
+    <div class="proj-section-title">Design Specifications</div>
+    <div class="specs-grid">
+      <div class="spec-cell"><div class="spec-label">Configuration</div><div class="spec-value">Helical + Spur (2-stage)</div></div>
+      <div class="spec-cell"><div class="spec-label">Gear Material</div><div class="spec-value">Alloy steel (case-hardened)</div></div>
+      <div class="spec-cell"><div class="spec-label">Shaft Material</div><div class="spec-value">Carbon steel</div></div>
+      <div class="spec-cell"><div class="spec-label">Design Standard</div><div class="spec-value">AGMA / IS 2535</div></div>
+      <div class="spec-cell"><div class="spec-label">CAD Tool</div><div class="spec-value">SolidWorks</div></div>
+      <div class="spec-cell"><div class="spec-label">FEA Tool</div><div class="spec-value">ANSYS Structural</div></div>
+    </div>
+  </div>
+
+  <div class="proj-section">
+    <div class="proj-section-title">Design Process</div>
+    <p><strong>Gear design:</strong> Helical and spur gear geometry was calculated from the input speed, output speed, and power requirements. Module, number of teeth, helix angle (for stage 1), face width, and centre distance were determined to satisfy bending strength (Lewis equation) and surface durability (Hertz contact stress) criteria with appropriate safety factors.</p>
+    <p><strong>Shaft design:</strong> Input, intermediate, and output shafts were designed for the combined bending moment and torque loading using the ASME shaft design equation. Shaft diameters were sized for both static and fatigue loading, with stress concentration factors at keyways and shoulders applied.</p>
+    <p><strong>Bearing selection:</strong> Rolling element bearings were selected from standard catalogues based on the calculated radial and axial loads at each support, targeting a rated L10 life of 10,000 hours or greater.</p>
+    <p><strong>FEA validation:</strong> Critical components — gear teeth under maximum tangential load and shaft sections at stress concentrations — were modelled and simulated in ANSYS to verify that maximum von Mises stress remained below allowable limits with appropriate safety margins.</p>
+  </div>
+
+  <div class="proj-section">
+    <div class="proj-section-title">Downloads &amp; Files</div>
+    <div class="files-list">
+      <div class="file-row">
+        <div class="file-info">
+          <span class="file-icon">DOCX</span>
+          <div>
+            <div class="file-name">Project Report — Two-Stage Helical-Spur Gearbox</div>
+            <div class="file-desc">Full design report: calculations, CAD drawings, FEA results, and tolerance analysis</div>
+          </div>
+        </div>
+        <a href="../assets/files/PROJECT_REPORT_TSDn.docx" download class="file-dl">Download ↓</a>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <span class="footer-left">© 2026 Abhishek Lele</span>
+  <div class="footer-links">
+    <a href="../index.html">← Portfolio</a>
+    <a href="https://abhisheklele33.github.io/abhisheklele/" target="_blank">Full Site ↗</a>
+    <a href="mailto:alele@ucsd.edu">Email</a>
+  </div>
+</footer>
+</body>
+</html>
