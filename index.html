@@ -55,7 +55,6 @@
       50% { transform: translate(-30px,40px); }
     }
 
-    /* NAV */
     nav {
       position: fixed;
       top: 0; left: 0; right: 0;
@@ -74,7 +73,6 @@
     nav ul a { color: var(--muted); text-decoration: none; font-family: 'Share Tech Mono', monospace; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; transition: color 0.2s; }
     nav ul a:hover { color: var(--accent); }
 
-    /* HERO */
     .hero {
       position: relative; z-index: 1;
       min-height: 100vh;
@@ -92,9 +90,8 @@
     .hero h1 .accent { color: var(--accent); }
     .hero-subtitle { font-family: 'Share Tech Mono', monospace; font-size: 14px; color: var(--accent3); margin-bottom: 28px; animation: fadeUp 0.6s 0.6s both; }
     .hero-desc { font-size: 13px; color: var(--text); line-height: 1.9; max-width: 560px; animation: fadeUp 0.6s 0.8s both; margin-bottom: 40px; }
-    .hero-links { display: flex; gap: 12px; flex-wrap: wrap; animation: fadeUp 0.6s 1s both; }
+    .hero-links { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; animation: fadeUp 0.6s 1s both; }
 
-    /* BUTTONS */
     .btn {
       display: inline-flex; align-items: center; gap: 8px;
       padding: 12px 24px;
@@ -116,14 +113,51 @@
     .btn-ghost::before { background: var(--muted); }
     .btn-ghost:hover { color: var(--bg); }
 
-    /* SECTION */
+    /* PORTFOLIO BUTTON */
+    .btn-portfolio {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 16px 36px;
+      background: transparent;
+      border: 2px solid var(--accent2);
+      color: var(--accent2);
+      text-decoration: none;
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 13px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      transition: all 0.25s;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 0 20px rgba(0,255,157,0.15), inset 0 0 20px rgba(0,255,157,0.03);
+    }
+    .btn-portfolio::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: var(--accent2);
+      transform: translateX(-101%);
+      transition: transform 0.25s;
+      z-index: -1;
+    }
+    .btn-portfolio:hover {
+      color: var(--bg);
+      box-shadow: 0 0 32px rgba(0,255,157,0.4), inset 0 0 20px rgba(0,255,157,0.1);
+    }
+    .btn-portfolio:hover::before { transform: translateX(0); }
+    .btn-portfolio-arrow {
+      font-size: 16px;
+      transition: transform 0.2s;
+    }
+    .btn-portfolio:hover .btn-portfolio-arrow { transform: translateX(4px); }
+
     section { position: relative; z-index: 1; max-width: 1200px; margin: 0 auto; padding: 100px 60px; }
     .section-label { font-family: 'Share Tech Mono', monospace; font-size: 11px; color: var(--accent2); letter-spacing: 4px; text-transform: uppercase; margin-bottom: 12px; display: flex; align-items: center; gap: 12px; }
     .section-label::after { content: ''; flex: 1; max-width: 60px; height: 1px; background: var(--accent2); }
     .section-title { font-family: 'Syne', sans-serif; font-size: clamp(32px,4vw,52px); font-weight: 800; color: var(--heading); letter-spacing: -1px; margin-bottom: 60px; }
     .divider { width: 100%; height: 1px; background: linear-gradient(90deg, transparent, var(--border), transparent); }
 
-    /* ABOUT */
     .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
     .about-text p { color: var(--text); margin-bottom: 16px; line-height: 1.9; }
     .about-stats { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2px; }
@@ -134,7 +168,6 @@
     .stat-num { font-family: 'Syne', sans-serif; font-size: 36px; font-weight: 800; color: var(--accent); line-height: 1; margin-bottom: 6px; }
     .stat-label { font-size: 11px; color: var(--muted); letter-spacing: 1px; text-transform: uppercase; }
 
-    /* TIMELINE */
     .timeline { position: relative; }
     .timeline::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 1px; background: linear-gradient(180deg, var(--accent), var(--accent2), transparent); }
     .timeline-item { padding-left: 36px; margin-bottom: 56px; position: relative; }
@@ -146,7 +179,6 @@
     .timeline-desc li { margin-bottom: 8px; padding-left: 16px; position: relative; }
     .timeline-desc li::before { content: '▸'; position: absolute; left: 0; color: var(--accent2); }
 
-    /* PROJECTS */
     .projects-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2px; }
     .project-card { background: var(--surface); border: 1px solid var(--border); padding: 36px 32px; position: relative; overflow: hidden; transition: border-color 0.3s, transform 0.3s; }
     .project-card::after { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(0,212,255,0.04), transparent); opacity: 0; transition: opacity 0.3s; }
@@ -157,18 +189,15 @@
     .project-desc { font-size: 13px; color: var(--text); line-height: 1.8; margin-bottom: 20px; }
     .project-tags { display: flex; flex-wrap: wrap; gap: 8px; }
 
-    /* TAGS / PILLS */
     .tag { font-family: 'Share Tech Mono', monospace; font-size: 10px; padding: 4px 10px; border: 1px solid var(--border); color: var(--muted); letter-spacing: 1px; text-transform: uppercase; }
     .skill-pill { font-size: 12px; padding: 5px 12px; background: var(--surface2); border: 1px solid var(--border); color: var(--text); border-radius: 2px; transition: all 0.2s; }
     .skill-pill:hover { border-color: var(--accent); color: var(--accent); }
 
-    /* SKILLS */
     .skills-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 2px; }
     .skill-group { background: var(--surface); border: 1px solid var(--border); padding: 28px; }
     .skill-group-title { font-family: 'Share Tech Mono', monospace; font-size: 11px; color: var(--accent2); letter-spacing: 3px; text-transform: uppercase; margin-bottom: 20px; padding-bottom: 12px; border-bottom: 1px solid var(--border); }
     .skill-list { display: flex; flex-wrap: wrap; gap: 8px; }
 
-    /* PUBLICATIONS */
     .pub-list { display: flex; flex-direction: column; gap: 2px; }
     .pub-card { background: var(--surface); border: 1px solid var(--border); padding: 28px 32px; display: flex; gap: 24px; align-items: flex-start; transition: border-color 0.2s; }
     .pub-card:hover { border-color: var(--accent2); }
@@ -178,7 +207,6 @@
     .pub-link { font-family: 'Share Tech Mono', monospace; font-size: 11px; color: var(--accent); text-decoration: none; letter-spacing: 1px; }
     .pub-link:hover { color: var(--accent2); }
 
-    /* CERT / AWARD CARDS */
     .card-list { display: flex; flex-direction: column; gap: 2px; }
     .info-card { background: var(--surface); border: 1px solid var(--border); padding: 24px 28px; display: flex; gap: 20px; align-items: flex-start; transition: border-color 0.2s; }
     .info-card:hover { border-color: var(--accent); }
@@ -188,7 +216,6 @@
     .info-desc { font-size: 12px; color: var(--text); line-height: 1.7; }
     .info-cred { font-family: 'Share Tech Mono', monospace; font-size: 10px; color: var(--muted); margin-top: 6px; }
 
-    /* CONTACT */
     .contact-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
     .contact-text h2 { font-family: 'Syne', sans-serif; font-size: clamp(28px,4vw,48px); font-weight: 800; color: var(--heading); line-height: 1.1; margin-bottom: 20px; }
     .contact-text p { color: var(--text); font-size: 13px; line-height: 1.9; margin-bottom: 32px; }
@@ -247,15 +274,15 @@
         clinical insight and physical hardware.
       </p>
       <div class="hero-links">
-        <a href="#projects" class="btn btn-solid">View Projects</a>
+        <a href="portfolio/index.html" class="btn-portfolio">
+          Portfolio <span class="btn-portfolio-arrow">↗</span>
+        </a>
         <a href="mailto:alele@ucsd.edu" class="btn">Get In Touch</a>
         <a href="https://www.linkedin.com/in/abhishek-lele-a35732220" target="_blank" class="btn">LinkedIn</a>
         <a href="Abhishek Lele Updated Resume.pdf" target="_blank" class="btn">Resume ↓</a>
-
       </div>
     </div>
 
-    <!-- Right side panel -->
     <div style="flex-shrink:0;width:320px;display:flex;flex-direction:column;gap:2px;animation:fadeUp 0.6s 1s both;">
       <div style="background:var(--surface);border:1px solid var(--border);padding:28px;">
         <div style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--accent2);letter-spacing:3px;margin-bottom:16px;text-transform:uppercase;">// Current Focus</div>
@@ -309,7 +336,6 @@
     <div class="section-label">02 // Education</div>
     <h2 class="section-title">Academic Background</h2>
     <div style="display:flex;flex-direction:column;gap:2px;">
-
       <div class="pub-card reveal" style="flex-direction:column;gap:0;">
         <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;margin-bottom:16px;">
           <div>
@@ -332,7 +358,6 @@
           <span class="tag">Patient-Centric Clinical Medicine</span>
         </div>
       </div>
-
       <div class="pub-card reveal" style="flex-direction:column;gap:0;">
         <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;margin-bottom:16px;">
           <div>
@@ -354,7 +379,6 @@
           <span class="tag">Dynamics of Machines</span>
         </div>
       </div>
-
     </div>
   </section>
 
@@ -395,7 +419,6 @@
     <div class="section-label">04 // Projects</div>
     <h2 class="section-title">What I've Built</h2>
     <div class="projects-grid">
-
       <div class="project-card reveal">
         <div class="project-num">PROJECT_01 · JAN 2026 – MAR 2026</div>
         <div class="project-title">Multimodal Wearable Haptic Navigation System</div>
@@ -404,7 +427,6 @@
           <span class="tag">BLE</span><span class="tag">ToF Sensor</span><span class="tag">Haptics</span><span class="tag">Arduino</span><span class="tag">Peltier</span><span class="tag">KiCad</span>
         </div>
       </div>
-
       <div class="project-card reveal">
         <div class="project-num">PROJECT_02 · SEPT 2025 – DEC 2025</div>
         <div class="project-title">Soft-Tip Cardiac Ablation Catheter with Contact-Force Sensing</div>
@@ -413,7 +435,6 @@
           <span class="tag">SolidWorks</span><span class="tag">ANSYS</span><span class="tag">SLA 3D Print</span><span class="tag">Arduino</span><span class="tag">MATLAB</span><span class="tag">Haptics</span>
         </div>
       </div>
-
       <div class="project-card reveal">
         <div class="project-num">PROJECT_03 · JUL 2024 – DEC 2024</div>
         <div class="project-title">TeleGlove</div>
@@ -422,7 +443,6 @@
           <span class="tag">Haptics</span><span class="tag">Unity</span><span class="tag">IMU</span><span class="tag">Embedded</span><span class="tag">FSR</span>
         </div>
       </div>
-
       <div class="project-card reveal">
         <div class="project-num">PROJECT_04 · JAN 2024 – MAY 2024</div>
         <div class="project-title">SoleSense</div>
@@ -431,7 +451,6 @@
           <span class="tag">fPCB</span><span class="tag">IMU</span><span class="tag">Processing</span><span class="tag">Gait Analysis</span><span class="tag">Wearable</span>
         </div>
       </div>
-
     </div>
   </section>
 
@@ -467,8 +486,6 @@
         </div>
       </div>
     </div>
-
-    <!-- Publications -->
     <div style="margin-top:80px;">
       <div class="section-label">05b // Publications</div>
       <h3 style="font-family:'Syne',sans-serif;font-size:28px;font-weight:800;color:var(--heading);margin-bottom:32px;letter-spacing:-0.5px;">Research</h3>
@@ -500,7 +517,6 @@
     <div class="section-label">06 // Certifications</div>
     <h2 class="section-title">Credentials</h2>
     <div class="card-list">
-
       <div class="info-card reveal">
         <div class="info-icon">🎓</div>
         <div>
@@ -509,7 +525,6 @@
           <div class="info-desc">Selected for HEEP '24 offered by Johns Hopkins University's Whiting School of Engineering. Explored various engineering disciplines through hands-on projects, workshops, and mentorship, gaining early exposure to Master's-level engineering and networking with professionals.</div>
         </div>
       </div>
-
       <div class="info-card reveal">
         <div class="info-icon">📜</div>
         <div>
@@ -518,7 +533,6 @@
           <div class="info-cred">Credential ID: d21dd8bd260e4617bf475c2e2ba9f6d7</div>
         </div>
       </div>
-
       <div class="info-card reveal">
         <div class="info-icon">📜</div>
         <div>
@@ -527,7 +541,6 @@
           <div class="info-cred">Credential ID: ME/BM009</div>
         </div>
       </div>
-
       <div class="info-card reveal">
         <div class="info-icon">📜</div>
         <div>
@@ -536,7 +549,6 @@
           <div class="info-cred">Credential: <a href="http://coursera.org/verify/XCZ7Y647L82R" target="_blank" class="pub-link">coursera.org/verify/XCZ7Y647L82R ↗</a></div>
         </div>
       </div>
-
     </div>
   </section>
 
@@ -547,7 +559,6 @@
     <div class="section-label">07 // Awards</div>
     <h2 class="section-title">Recognition</h2>
     <div class="card-list">
-
       <div class="info-card reveal">
         <div class="info-icon">🏆</div>
         <div>
@@ -556,7 +567,6 @@
           <div class="info-desc">Received an academic scholarship worth one year's tuition (INR 3,10,000) from MIT World Peace University based on excellent performance in engineering entrance exam (MHTCET).</div>
         </div>
       </div>
-
       <div class="info-card reveal">
         <div class="info-icon">🥉</div>
         <div>
@@ -565,7 +575,6 @@
           <div class="info-desc">Presented a project based on "Augmented Reality Navigation for Public Spaces" in the Ideation track of MITWPU Hackathon '24.</div>
         </div>
       </div>
-
     </div>
   </section>
 
