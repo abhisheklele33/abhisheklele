@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Project — Abhishek Lele</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="page" id="app">
+
+  <nav class="nav">
+    <div class="wrap">
+      <a class="logo" href="index.html">AL<span>.</span></a>
+      <div class="nav-links">
+        <a href="index.html">Portfolio</a>
+        <a href="https://abhisheklele33.github.io/abhisheklele/" target="_blank" rel="noopener">Full Site ↗</a>
+        <a href="mailto:alele@ucsd.edu">Email ↗</a>
+      </div>
+    </div>
+  </nav>
+
+  <main id="content"></main>
+
+  <footer class="wrap foot">
+    <span>© 2026 Abhishek Lele <span class="green">// Built with purpose</span></span>
+    <span>San Diego, CA</span>
+  </footer>
+
+</div>
+
+<script src="projects-data-1.js"></script>
+<script src="projects-data-2.js"></script>
+<script src="portfolio.js"></script>
+<script>
+(function () {
+  const id = new URLSearchParams(location.search).get("id") || (PROJECTS[0] && PROJECTS[0].id);
+  const { project: p, prev, next } = getProject(id);
+  const content = document.getElementById("content");
+
+  if (!p) {
+    content.innerHTML = `<div class="wrap" style="padding:120px 0">
+      <div class="label coral">Not found</div>
+      <h1 style="font-family:var(--display);font-size:46px;color:var(--white);margin:14px 0">No such project.</h1>
+      <a class="btn green" href="index.html">← Back to portfolio</a></div>`;
+    return;
+  }
+  document.title = `${p.title} — Abhishek Lele`;
+
+  const chips = (arr, sm) => arr && arr.length ? `<div class="chips">${arr.map(t => `<span class="chip${sm ? " sm" : ""}">${t}</span>`).join("")}</div>` : "";
+  const paras = (v) => (Array.isArray(v) ? v : [v]).map(t => `<p>${t}</p>`).join("");
+
+  // ---- hero ----
+  const statusPill = p.status ? `<span class="status-pill ${p.statusKind || "current"}">${p.status}</span>` : "";
+  const heroLinks = (p.downloads && p.downloads.length)
+    ? `<div class="hero-links">${p.downloads.map(d => `<a class="btn cyan" href="${d.href}" target="_blank" rel="noopener">${d.label} ↓</a>`).join("")}${p.links ? p.links.map(l => `<a class="btn ghost" href="${l.href}" target="_blank" rel="noopener">${l.label}</a>`).join("") : ""}</div>`
+    : (p.links && p.links.length ? `<div class="hero-links">${p.links.map(l => `<a class="btn cyan" href="${l.href}" target="_blank" rel="noopener">${l.label}</a>`).join("")}</div>` : "");
+
+  let figNo = 0;
+  const heroFigInner = p.hero
+    ? (p.hero.logo ? renderLogo(p.hero.logo) : figure({ src: p.hero.src, cap: p.hero.cap, label: p.hero.label, note: p.hero.note, cover: p.hero.cover }, String(++figNo).padStart(2, "0")))
+    : "";
+
+  const facts = `
+    <div class="fact"><div class="k">Timeline</div><div class="v">${p.dates}</div></div>
+    <div class="fact"><div class="k">Context</div><div class="v">${p.context}</div></div>
+    <div class="fact"><div class="k">Role</div><div class="v">${p.role}</div></div>
+    <div class="fact"><div class="k">Domain</div><div class="v cyan">${p.categories.join(" · ")}</div></div>`;
+
+  // hero band: facts + figure side by side, or facts strip alone
+  const heroBand = p.hero
+    ? `<div class="wrap"><div class="hero-split reveal"><div class="facts">${facts}</div>${heroFigInner}</div></div>`
+    : `<div class="wrap"><div class="facts reveal" style="margin-top:30px">${facts}</div></div>`;
+
+  // ---- methods (2-col card grid) ----
+  const methodCards = (p.methods || []).map((m, i) => `
+    <div class="mcard reveal">
+      <div class="anum">${String(i + 1).padStart(2, "0")}</div>
+      <h4>${m.h}</h4><p>${m.p}</p>
+      ${m.chips ? `<div class="achips">${chips(m.chips, true)}</div>` : ""}
+    </div>`).join("");
+  const archBlock = p.architecture ? `
+    <div class="reveal" style="margin-top:30px">
+      <div class="label cyan" style="margin-bottom:14px">System Architecture</div>
+      ${renderFlow(p.architecture)}
+    </div>` : "";
+
+  // ---- results ----
+  let resultsBlock = "";
+  if (p.results) {
+    const r = p.results;
+    const metrics = r.metrics ? `<div class="metrics reveal">${r.metrics.map(m => `
+      <div class="metric"><div class="big">${m.big}${m.unit ? `<span class="unit">${m.unit}</span>` : ""}</div>
+      <div class="mlabel">${m.label}</div>${m.desc ? `<div class="mdesc">${m.desc}</div>` : ""}</div>`).join("")}</div>` : "";
+    const chartsArr = r.charts || (r.chart ? [r.chart] : []);
+    const chartHTML = chartsArr.map(c => `
+      <div class="chartwrap">
+        <div class="chart-head"><span class="ct">${c.title || ""}</span>${c.subtitle ? `<span class="cs">${c.subtitle}</span>` : ""}</div>
+        ${renderChart(c)}
+      </div>`).join("");
+    const txt = r.text ? `<div class="prose">${paras(r.text)}</div>` : "";
+    // pair chart + text in a row when both exist
+    const chartBlock = chartHTML
+      ? (txt ? `<div class="chart-row reveal">${chartHTML}${txt}</div>` : `<div class="reveal" style="margin-top:24px">${chartHTML}</div>`)
+      : (txt ? `<div class="reveal" style="margin-top:24px">${txt}</div>` : "");
+    resultsBlock = `
+      <section class="wrap section">
+        <div class="label cyan reveal">Results</div>
+        <h2 class="stitle reveal">${r.title || "Results & Validation"}</h2>
+        ${r.intro ? `<p class="sintro reveal">${r.intro}</p>` : ""}
+        ${metrics}${chartBlock}
+      </section>`;
+  }
+
+  // ---- equations (2-up grid) ----
+  const eqBlock = (p.equations && p.equations.length) ? `
+    <section class="wrap section">
+      <div class="label reveal">Analysis</div>
+      <h2 class="stitle reveal">Key Equations</h2>
+      <div class="eqgrid">${p.equations.map(e => `<div class="reveal">${renderEq(e.tex, e.caption)}</div>`).join("")}</div>
+    </section>` : "";
+
+  // ---- gallery ----
+  const galleryBlock = (p.gallery && p.gallery.length) ? `
+    <section class="wrap section">
+      <div class="label reveal">Gallery</div>
+      <h2 class="stitle reveal">Figures &amp; Documentation</h2>
+      <p class="sintro reveal">Renders, hardware, and figures from the project record — click any to enlarge.</p>
+      <div class="figgrid">
+        ${p.gallery.map((g, i) => `<div class="gcell ${g.span || "g-third"} reveal" data-gi="${i}">${figure(g, String(figNo + i + 1).padStart(2, "0"))}</div>`).join("")}
+      </div>
+    </section>` : "";
+
+  // ---- downloads (full section if any) ----
+  const dlBlock = (p.downloads && p.downloads.length) ? `
+    <section class="wrap section">
+      <div class="label reveal">Files</div>
+      <h2 class="stitle reveal">Reports &amp; Documents</h2>
+      <div class="downloads reveal">
+        ${p.downloads.map(d => `<a class="dl-row" href="${d.href}" target="_blank" rel="noopener">
+          <div class="dl-info"><span class="dl-icon">${d.kind || "PDF"}</span>
+          <div><div class="dl-name">${d.name || d.label}</div>${d.desc ? `<div class="dl-desc">${d.desc}</div>` : ""}</div></div>
+          <span class="dl-go">Open ↗</span></a>`).join("")}
+      </div>
+    </section>` : "";
+
+  const pagerCard = (proj, dir) => proj
+    ? `<a href="project.html?id=${proj.id}"><span class="dir">${dir}</span><span class="ttl">${proj.title}</span></a>`
+    : `<a class="disabled"><span class="dir">${dir}</span><span class="ttl">—</span></a>`;
+
+  content.innerHTML = `
+    <div class="wrap"><nav class="crumbs">
+      <a href="index.html">Portfolio</a><span class="sep">/</span><span>PROJECT_${p.num}</span>
+    </nav></div>
+
+    <header class="wrap detail-hero">
+      <div class="pmeta">PROJECT_${p.num}<span class="dot">·</span>${p.dates}${statusPill}</div>
+      <h1>${p.fullTitle || p.title}</h1>
+      <p class="sub">${p.tagline}</p>
+      <div class="herochips">${chips(p.tags)}</div>
+      ${heroLinks}
+    </header>
+
+    ${heroBand}
+
+    ${(p.aim || p.background) ? `<section class="wrap section">
+      <div class="lead-grid">
+        ${p.aim ? `<div class="reveal"><div class="label col-label">Aim</div><p class="aim">${p.aim}</p></div>` : "<div></div>"}
+        ${p.background ? `<div class="reveal"><div class="label col-label">Background &amp; Motivation</div><div class="prose">${paras(p.background)}</div></div>` : ""}
+      </div>
+    </section>` : ""}
+
+    ${(p.methods || p.architecture) ? `<section class="wrap section">
+      <div class="label reveal">Methods</div>
+      <h2 class="stitle reveal">${p.methodsTitle || "System & Approach"}</h2>
+      ${p.methodsIntro ? `<p class="sintro reveal">${p.methodsIntro}</p>` : ""}
+      ${methodCards ? `<div class="methodgrid">${methodCards}</div>` : ""}
+      ${archBlock}
+    </section>` : ""}
+
+    ${resultsBlock}
+    ${eqBlock}
+    ${galleryBlock}
+    ${dlBlock}
+
+    <div class="wrap">
+      <div class="pager reveal">${pagerCard(prev, "← Previous")}${pagerCard(next, "Next →")}</div>
+      <div style="text-align:center;padding:34px 0 0"><a class="btn ghost" href="index.html">↩ All Projects</a></div>
+    </div>`;
+
+  // gallery lightbox
+  initLightbox();
+  content.querySelectorAll(".gcell").forEach(el => {
+    el.addEventListener("click", () => openLightbox(p.gallery[+el.dataset.gi]));
+  });
+  initReveal();
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portfolio — Abhishek Lele</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="page" id="app">
+
+  <nav class="nav">
+    <div class="wrap">
+      <a class="logo" href="https://abhisheklele33.github.io/abhisheklele/" target="_blank" rel="noopener">AL<span>.</span></a>
+      <div class="nav-links">
+        <a href="index.html" class="active">Portfolio</a>
+        <a href="https://abhisheklele33.github.io/abhisheklele/" target="_blank" rel="noopener">Full Site ↗</a>
+        <a href="https://www.linkedin.com/in/abhishek-lele-a35732220" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="mailto:alele@ucsd.edu">Email ↗</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="wrap idx-hero">
+    <div class="label">Selected Work</div>
+    <h1>Projects<span class="accent">.</span></h1>
+    <p class="lede">
+      Medical devices, wearables, haptics and mechanical design — each documented end to end:
+      the aim, the methods, the numbers, and the build.
+    </p>
+    <div class="idx-meta">
+      <span><b id="countN">08</b> Projects</span>
+      <span>2023 — 2026</span>
+      <span>Medical Devices · Wearables · Haptics · Biomechanics</span>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <div class="filters" id="filters"></div>
+    <section class="grid" id="grid"></section>
+  </main>
+
+  <footer class="wrap foot">
+    <span>© 2026 Abhishek Lele <span class="green">// Built with purpose</span></span>
+    <span>San Diego, CA</span>
+  </footer>
+
+</div>
+
+<script src="projects-data-1.js"></script>
+<script src="projects-data-2.js"></script>
+<script src="portfolio.js"></script>
+<script>
+  (function () {
+    const grid = document.getElementById("grid");
+    const filtersEl = document.getElementById("filters");
+    document.getElementById("countN").textContent = String(PROJECTS.length).padStart(2, "0");
+    let active = "All";
+
+    function cardHTML(p) {
+      const tags = p.tags.slice(0, 5).map(t => `<span class="chip sm">${t}</span>`).join("");
+      const thumb = (p.hero && p.hero.logo)
+        ? renderLogo(p.hero.logo)
+        : figure({ src: p.hero && p.hero.src, label: p.hero && p.hero.label, note: p.hero && p.hero.note }, null);
+      const pill = p.status ? `<span class="status-pill ${p.statusKind || "current"}" style="margin:0">${p.status}</span>` : `<span class="date">${p.dates}</span>`;
+      return `
+        <a class="card reveal" href="project.html?id=${p.id}" data-cats="${p.categories.join("|")}">
+          <div class="thumb">${thumb}</div>
+          <div class="body">
+            <div class="cardmeta"><span class="num">PROJECT_${p.num}</span>${pill}</div>
+            <h3>${p.title}</h3>
+            <p class="desc">${p.tagline}</p>
+            <div class="chips">${tags}</div>
+            <div class="cardfoot"><span></span><span class="arrow">View ↗</span></div>
+          </div>
+        </a>`;
+    }
+
+    function render() {
+      const items = PROJECTS.filter(p => active === "All" || p.categories.includes(active));
+      grid.innerHTML = items.map(cardHTML).join("");
+      initReveal();
+    }
+    function renderFilters() {
+      filtersEl.innerHTML = CATEGORIES.map(c =>
+        `<button class="filter${c === active ? " active" : ""}" data-cat="${c}">${c}</button>`).join("");
+      filtersEl.querySelectorAll(".filter").forEach(btn => {
+        btn.addEventListener("click", () => { active = btn.dataset.cat; renderFilters(); render(); });
+      });
+    }
+    renderFilters();
+    render();
+  })();
+</script>
+</body>
+</html>
