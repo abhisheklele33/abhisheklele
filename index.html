@@ -323,7 +323,7 @@
       </div>
       <div class="about-stats reveal">
         <div class="stat-card"><div class="stat-num">3.98</div><div class="stat-label">Undergrad GPA</div></div>
-        <div class="stat-card"><div class="stat-num">3.67</div><div class="stat-label">Graduate GPA</div></div>
+        <div class="stat-card"><div class="stat-num">3.78</div><div class="stat-label">Graduate GPA</div></div>
         <div class="stat-card"><div class="stat-num">2</div><div class="stat-label">Publications</div></div>
       </div>
     </div>
@@ -344,7 +344,7 @@
           </div>
           <div style="display:flex;flex-direction:column;align-items:flex-end;gap:6px;flex-shrink:0;">
             <div style="font-family:'Syne',sans-serif;font-size:13px;font-weight:700;color:var(--accent3);letter-spacing:1px;">SEPT 2025 – DEC 2026</div>
-            <div style="font-family:'Syne',sans-serif;font-size:15px;font-weight:800;color:var(--accent2);">GPA 3.67 / 4.0</div>
+            <div style="font-family:'Syne',sans-serif;font-size:15px;font-weight:800;color:var(--accent2);">GPA 3.78 / 4.0</div>
           </div>
         </div>
         <div style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--muted);letter-spacing:2px;text-transform:uppercase;margin-bottom:10px;">Relevant Coursework</div>
@@ -352,9 +352,11 @@
           <span class="tag">Soft Robotics</span>
           <span class="tag">Biomedical Integrated Circuits & Systems</span>
           <span class="tag">Design & Control of Haptic Systems</span>
-          <span class="tag">Biomaterials & Medical Devices</span>
+          <span class="tag">Materials for Medical Devices</span>
           <span class="tag">Finite Element Methods I</span>
           <span class="tag">Regulatory Affairs</span>
+          <span class="tag">Biomaterials</span>
+          <span class="tag">MDE Capstone Design I & II </span>
           <span class="tag">Patient-Centric Clinical Medicine</span>
         </div>
       </div>
@@ -389,7 +391,19 @@
     <div class="section-label">03 // Experience</div>
     <h2 class="section-title">Work History</h2>
     <div class="timeline">
-      <div class="timeline-item reveal">
+     
+        <div class="timeline-item reveal">
+        <div class="timeline-dot"></div>
+        <div class="timeline-date">JUN 2026 – SEP 2026</div>
+        <div class="timeline-role">Mechanical Engineering Intern</div>
+        <div class="timeline-org">Madison Scientific · Chicago, IL, USA</div>
+        <ul class="timeline-desc">
+          <li>Led mechanical design of ShuntBuddy&trade;, a wearable barometric pressure sensor enabling atmospheric compensation for the SmartShunt&trade; implantable hydrocephalus system, reducing device volume by 27% through iterative SolidWorks modeling and SLA-printed prototypes of enclosures and external accessories.</li>
+          <li>Achieved IP67 ingress protection (IEC 60529) by specifying PTFE vent membranes and adhesive sealing, and drove design-for-manufacturing with injection molding vendors under an ISO 13485 quality system.</li>
+          <li>Integrated ShuntBuddy&trade; with the SmartShunt&trade; implant to enable pressure-compensated shunt operation, ensuring reliable barometric sensing on-wrist.</li>
+        </ul>
+      </div>
+         <div class="timeline-item reveal">
         <div class="timeline-dot"></div>
         <div class="timeline-date">JAN 2025 – JUN 2025</div>
         <div class="timeline-role">R&D Intern — Medical Implants</div>
@@ -419,8 +433,16 @@
     <div class="section-label">04 // Projects</div>
     <h2 class="section-title">What I've Built</h2>
     <div class="projects-grid">
+       <div class="project-card reveal">
+        <div class="project-num">PROJECT_01 · JAN 2026 – MAY 2026</div>
+        <div class="project-title">ContinuEar — PPG & BCG-Based Continuous Blood Pressure Monitoring Earbud</div>
+        <p class="project-desc">Designed a wearable earbud for cuffless, continuous blood pressure monitoring using pulse transit time (PTT), integrating a MAX30102 IR-channel PPG sensor (880 nm) and a GY-906 MLX90614 non-contact tympanic thermometer in a custom SLA 3D-printed housing ergonomically contoured to the ear canal. Fused ballistocardiogram (BCG) waveforms from an Arduino Nano 33 BLE Sense onboard IMU with PPG signals to extract PTT for BP estimation, using tympanic temperature as a physiological correction factor. Achieved ±12 mmHg systolic and ±7 mmHg diastolic accuracy versus reference cuff, with real-time fiducial-point detection across BCG and PPG waveforms at &lt;200 ms measurement-to-reading latency.</p>
+        <div class="project-tags">
+          <span class="tag">PPG</span><span class="tag">BCG</span><span class="tag">PTT</span><span class="tag">BLE</span><span class="tag">DSP</span><span class="tag">SLA 3D Print</span>
+        </div>
+      </div>
       <div class="project-card reveal">
-        <div class="project-num">PROJECT_01 · JAN 2026 – MAR 2026</div>
+        <div class="project-num">PROJECT_02 · JAN 2026 – MAR 2026</div>
         <div class="project-title">Multimodal Wearable Haptic Navigation System</div>
         <p class="project-desc">Engineered a wireless two-module haptic system: a spectacle-mounted sensing unit with a VL53L5CX Time-of-Flight sensor and BLE transmitter, and a forearm-mounted feedback module. Implemented multimodal haptic feedback using a Peltier thermoelectric actuator and VCA vibrotactile motor, with closed-loop thermal control (15–42 °C). Algorithms map obstacle distance/direction to thermal pulses and vibration cues within 0.3–3 m range.</p>
         <div class="project-tags">
@@ -428,7 +450,7 @@
         </div>
       </div>
       <div class="project-card reveal">
-        <div class="project-num">PROJECT_02 · SEPT 2025 – DEC 2025</div>
+        <div class="project-num">PROJECT_03 · SEPT 2025 – DEC 2025</div>
         <div class="project-title">Soft-Tip Cardiac Ablation Catheter with Contact-Force Sensing</div>
         <p class="project-desc">Designed an 8 Fr cardiac ablation-style catheter with an elastic resin distal tip and Pebax braided shaft, integrating piezoresistive contact-force sensing. Developed real-time force estimation and haptic feedback using Arduino Nano 33 BLE and MATLAB. Achieved detectable sensing in the 0.05–0.5 N range with &lt;50 ms feedback latency.</p>
         <div class="project-tags">
@@ -436,7 +458,7 @@
         </div>
       </div>
       <div class="project-card reveal">
-        <div class="project-num">PROJECT_03 · JUL 2024 – DEC 2024</div>
+        <div class="project-num">PROJECT_04 · JUL 2024 – DEC 2024</div>
         <div class="project-title">TeleGlove</div>
         <p class="project-desc">A bidirectional wearable haptic glove integrating FSRs, flex sensors, and an IMU for real-time hand motion tracking. Mapped position/motion into a Unity virtual environment with vibrotactile feedback for closed-loop force-proportional response. Achieved 65% motion translation and feedback efficiency.</p>
         <div class="project-tags">
@@ -444,7 +466,7 @@
         </div>
       </div>
       <div class="project-card reveal">
-        <div class="project-num">PROJECT_04 · JAN 2024 – MAY 2024</div>
+        <div class="project-num">PROJECT_05 · JAN 2024 – MAY 2024</div>
         <div class="project-title">SoleSense</div>
         <p class="project-desc">A smart insole instrumented with custom-fabricated pressure sensors and an IMU on a flexible PCB. Captured plantar pressure distributions and foot orientation with real-time Processing visualization. Achieved 80% accuracy in foot orientation tracking versus dynamic walkways in clinical patient evaluations.</p>
         <div class="project-tags">
@@ -474,12 +496,18 @@
         </div>
       </div>
       <div class="skill-group reveal">
+        <div class="skill-group-title">Prototyping & Manufacturing</div>
+        <div class="skill-list">
+          <span class="skill-pill">SLA/FDM 3D Printing</span><span class="skill-pill">CNC Machining</span><span class="skill-pill">Injection Molding</span><span class="skill-pill">Laser Cutting</span><span class="skill-pill">PCB Assembly</span>
+        </div>
+      </div>
+      <div class="skill-group reveal">
         <div class="skill-group-title">Biomechanics & Motion</div>
         <div class="skill-list">
           <span class="skill-pill">Vicon Nexus</span><span class="skill-pill">OpenSim</span><span class="skill-pill">FootWork</span><span class="skill-pill">LabChart</span><span class="skill-pill">Gait Analysis</span><span class="skill-pill">Motion Capture</span>
         </div>
       </div>
-      <div class="skill-group reveal">
+      
         <div class="skill-group-title">Domain Expertise</div>
         <div class="skill-list">
           <span class="skill-pill">Soft Robotics</span><span class="skill-pill">Haptic Systems</span><span class="skill-pill">Biomaterials</span><span class="skill-pill">Regulatory Affairs</span><span class="skill-pill">Wearables</span><span class="skill-pill">FEM</span>
